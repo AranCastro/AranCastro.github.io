@@ -57,7 +57,7 @@ Two lines of evidence support contact-based prevention. A meta-analysis of 148 s
 | Focus today | On the Today screen: tasks due today or late (any quadrant), then Do first; reduced to one task when today's mood is Low or Heavy |
 | Circle matrix | People sorted by closeness (close / wider) and contact mode (call / message): Call anytime, Quick call, Message first, Light chat; add from the phone's contact picker or by hand; one-tap Call, SMS and WhatsApp with a neutral opener |
 | Reach out today | On a Low or Heavy day, Today suggests one person to call and one to message, least recently reached first |
-| Play | Four short games matched to today's mood: Breathe (Heavy; 4-2-6 s paced breathing, five rounds), Bubble Pop (Low; untimed), Pair Up (Okay; six-pair memory game), Colour Clash (Good or Bright; 30 s word-colour interference task). Best scores kept on the device |
+| Play | Four short games matched to today's mood: Breathe (Heavy; three paced-breathing rhythms with a progress ring), Bubble Pop (Low; untimed Zen mode or a 60 s dash), Pair Up (Okay; memory game at three levels with star rating), Colour Clash (Good or Bright; 30 s word-colour interference task with streak multipliers). Shared results screen, countdown and particle effects. Best scores kept on the device |
 | Settings | Name, daily reminder (on/off, time), nudge threshold, privacy summary, helpline, privacy policy, erase all data |
 | Nudge delivery | HTTPS publish to ntfy.sh with automatic retry when offline |
 | Buddy onboarding | Web page `arancastro.github.io/join/` (install ntfy, subscribe, confirm "I'm in") |

@@ -57,6 +57,7 @@ Two lines of evidence support contact-based prevention. A meta-analysis of 148 s
 | Focus today | On the Today screen: tasks due today or late (any quadrant), then Do first; reduced to one task when today's mood is Low or Heavy |
 | Circle matrix | People sorted by closeness (close / wider) and contact mode (call / message): Call anytime, Quick call, Message first, Light chat; add from the phone's contact picker or by hand; one-tap Call, SMS and WhatsApp with a neutral opener |
 | Reach out today | On a Low or Heavy day, Today suggests one person to call and one to message, least recently reached first |
+| Play | Four short games matched to today's mood: Breathe (Heavy; 4-2-6 s paced breathing, five rounds), Bubble Pop (Low; untimed), Pair Up (Okay; six-pair memory game), Colour Clash (Good or Bright; 30 s word-colour interference task). Best scores kept on the device |
 | Settings | Name, daily reminder (on/off, time), nudge threshold, privacy summary, helpline, privacy policy, erase all data |
 | Nudge delivery | HTTPS publish to ntfy.sh with automatic retry when offline |
 | Buddy onboarding | Web page `arancastro.github.io/join/` (install ntfy, subscribe, confirm "I'm in") |
@@ -74,6 +75,10 @@ The Eisenhower Matrix sorts tasks by urgency and importance. Placing it beside t
 ### 5.2 The circle matrix
 
 The nudge relies on one buddy noticing. The circle matrix adds a second route that the user controls: on a low day the app proposes a specific person and a specific action, which removes the decision of whom to contact at the moment when decisions are hardest. Gulliver et al. (2010) identified social support and encouragement from others as facilitators of help-seeking; the matrix makes that support visible and one tap away. Suggestions rotate by the date each person was last reached, so the same friend is not asked every time. Pre-written openers ("Hey, thinking of you. How have you been?") contain no reference to mood, so the user decides how much to share.
+
+### 5.3 Mood-matched games
+
+The Play tab offers one game chosen from today's check-in. The pairing follows task demand: the lower the mood, the lower the effort asked. Heavy days get a paced-breathing exercise with nothing to win; Low days get an untimed bubble game with no failure state; Okay days get a short memory game; Good and Bright days get a timed word-colour interference task in the style of the Stroop test. No therapeutic effect is claimed for any game; they are presented as short breaks, and any such claim would need a controlled evaluation.
 
 ## 6. Architecture
 

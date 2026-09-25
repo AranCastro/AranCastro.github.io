@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Be a Buddy</title>
+<meta name="description" content="Someone picked you as their quiet buddy on Nudge a Friend. Set up takes one minute.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#2F4A3F">
+<link rel="icon" href="../assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Manrope:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="bar"><a href="../"><img src="../assets/icon-256.png" alt="">Nudge a Friend</a></header>
+
+  <div id="bad" class="hidden">
+    <h1>This invite link is incomplete.</h1>
+    <p class="dim">Ask your friend to share the invite again from the Nudge a Friend app.</p>
+  </div>
+
+  <div id="ok" class="hidden">
+    <p class="label">You have been chosen</p>
+    <h1><span class="who">Your friend</span> picked you as their buddy.</h1>
+    <p class="lede">If <span class="who">your friend</span> ever has a few rough days in a row, you will get one short note asking you to call. That is all.</p>
+
+    <div class="card">
+      <h3>1. Install ntfy</h3>
+      <p class="dim">A free, open-source notification app. No account needed.</p>
+      <div class="btn-row">
+        <a class="btn secondary" href="https://play.google.com/store/apps/details?id=io.heckel.ntfy" rel="noopener">Google Play</a>
+        <a class="btn secondary" href="https://apps.apple.com/app/ntfy/id1625396347" rel="noopener">App Store</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>2. Subscribe to <span class="who">your friend</span>’s topic</h3>
+      <p class="dim">On Android, tap the button. Otherwise open ntfy, tap <strong>+</strong>, and paste this topic name:</p>
+      <code class="topic" id="topic"></code>
+      <div class="btn-row">
+        <a class="btn" id="open">Open in ntfy</a>
+        <button class="btn secondary" id="copy" type="button">Copy topic</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>3. Let <span class="who">your friend</span> know you are in</h3>
+      <p class="dim">This tells their app you are set up. Nothing else is sent.</p>
+      <div class="btn-row">
+        <button class="btn" id="join" type="button">I’m in</button>
+      </div>
+      <p class="small" id="joinMsg" role="status" style="margin-top:10px"></p>
+    </div>
+
+    <div class="card soft">
+      <h3>If a nudge arrives</h3>
+      <p class="dim">Just call or message and say hello. You do not need to mention the note or ask why. You will never see their moods.</p>
+    </div>
+  </div>
+
+  <footer>
+    <a href="../privacy/">Privacy</a> · Nudge a Friend is not a medical or emergency service. In an emergency, call 112.
+  </footer>
+</div>
+<script>
+(function () {
+  var q = new URLSearchParams(location.search);
+  var topic = q.get('t') || '';
+  var name = (q.get('n') || '').trim().slice(0, 40);
+  // Topics are created by the app as "nudge-" + 12 lowercase letters or digits.
+  if (!/^nudge-[a-z0-9]{12,32}$/.test(topic)) {
+    document.getElementById('bad').classList.remove('hidden');
+    return;
+  }
+  document.getElementById('ok').classList.remove('hidden');
+  if (name) document.querySelectorAll('.who').forEach(function (el) { el.textContent = name; });
+  if (name) document.title = name + ' picked you as their buddy';
+  document.getElementById('topic').textContent = topic;
+  document.getElementById('open').href = 'ntfy://ntfy.sh/' + topic;
+
+  document.getElementById('copy').addEventListener('click', function () {
+    var b = this;
+    try {
+      navigator.clipboard.writeText(topic).then(function () { b.textContent = 'Copied'; }, function () { b.textContent = 'Select and copy above'; });
+    } catch (e) { b.textContent = 'Select and copy above'; }
+  });
+
+  document.getElementById('join').addEventListener('click', function () {
+    var b = this, msg = document.getElementById('joinMsg');
+    b.disabled = true;
+    fetch('https://ntfy.sh/' + topic + '-ack', { method: 'POST', body: 'joined' })
+      .then(function (r) {
+        if (!r.ok) throw new Error();
+        b.textContent = 'Done';
+        msg.textContent = 'Thank you. ' + (name || 'Your friend') + '’s app will show you as connected the next time they open it.';
+      })
+      .catch(function () {
+        b.disabled = false;
+        msg.textContent = 'Could not reach the server. Check your internet and try again.';
+      });
+  });
+})();
+</script>
+</body>
+</html>

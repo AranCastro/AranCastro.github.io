@@ -1,4 +1,4 @@
-# Nudge a Friend: Product Analysis and Development Plan
+# Daybloom (formerly Nudge a Friend): Product Analysis and Development Plan
 
 **Version:** 1.0 (25 September 2026)
 **Author:** Dr Aran Castro
@@ -8,7 +8,7 @@
 
 ## 1. Summary
 
-Nudge a Friend is a mobile application that asks the user one question a day, "How does today feel?", answered with a single tap on a five-point scale (Bright, Good, Okay, Low, Heavy). When the user records a set number of consecutive low days (default three), one trusted person chosen by the user receives a single notification: "Call Aran today." The buddy is not told the reason and never sees the mood record. All mood data remain on the user's phone.
+Daybloom is a mobile application whose core feature, Nudge a Friend, asks the user one question a day, "How does today feel?", answered with a single tap on a five-point scale (Bright, Good, Okay, Low, Heavy). When the user records a set number of consecutive low days (default three), one trusted person chosen by the user receives a single notification: "Call Aran today." The buddy is not told the reason and never sees the mood record. All mood data remain on the user's phone.
 
 The product addresses a specific behavioural gap: people in distress are the least likely to ask for help, while the people close to them would act if they knew. The application converts a private signal into a minimal, privacy-preserving prompt to a person who already cares about the user.
 
@@ -36,7 +36,7 @@ Two lines of evidence support contact-based prevention. A meta-analysis of 148 s
 
 ## 4. Existing Solutions
 
-| Category | Examples | Gap relative to Nudge a Friend |
+| Category | Examples | Gap relative to Daybloom's Nudge a Friend |
 |---|---|---|
 | Mood trackers | Daylio, Bearable, How We Feel | Data stay with the user; no one is told |
 | Check-in / "are you alive" apps | Daily safety check-in apps for people living alone | Alert on *no response*, not on low mood; alerts usually disclose the reason |
@@ -65,7 +65,7 @@ Two lines of evidence support contact-based prevention. A meta-analysis of 148 s
 | Nudge delivery | HTTPS publish to ntfy.sh with automatic retry when offline |
 | Buddy onboarding | Web page `arancastro.github.io/join/` (install ntfy, subscribe, confirm "I'm in") |
 | Design | Custom design system: Fraunces and Manrope typefaces, warm neutral palette, light and dark themes, haptics, spring animations, custom icon set and app icon |
-| Platform | Expo SDK 57, React Native 0.86, TypeScript; Android package `online.draran.nudge` |
+| Platform | Expo SDK 57, React Native 0.86, TypeScript; Android package `online.draran.daybloom` |
 
 *Table 3. Features in version 1.*
 
@@ -92,7 +92,7 @@ Each feature previously had its own reward. A single garden turns every small ac
 ```
  User's phone                                  Buddy's phone
  ┌───────────────────────────┐                ┌──────────────────┐
- │ Nudge a Friend app        │   HTTPS POST   │ ntfy app         │
+ │ Daybloom app              │   HTTPS POST   │ ntfy app         │
  │  • moods (SQLite, local)  │ ─────────────► │  subscribed to   │
  │  • nudge rule             │   ntfy.sh      │  nudge-xxxxxxxx  │
  │  • daily local reminder   │ ◄───────────── │                  │
@@ -132,7 +132,7 @@ Known limitation: because there is no server, the app cannot detect *silence* (a
 ## 9. Play Store Launch Checklist
 
 - [ ] Google Play developer account (one-time registration fee, USD 25)
-- [ ] Confirm package name `online.draran.nudge` (cannot be changed after first upload)
+- [ ] Confirm package name `online.draran.daybloom` (cannot be changed after first upload)
 - [ ] `eas build -p android --profile production` to produce the `.aab`
 - [ ] Store listing: short description, full description, 2–8 phone screenshots, 512 × 512 icon, 1024 × 500 feature graphic
 - [ ] Privacy policy URL: `https://arancastro.github.io/privacy/`

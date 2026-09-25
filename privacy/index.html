@@ -39,6 +39,10 @@
   <p>If you add Daybloom widgets to your home screen, they show some of this information there (for example task titles, your streak, your garden or the names in your circle), where anyone holding your unlocked phone can see it. Widgets read the same on-device storage and send nothing anywhere. You can remove a widget at any time from your home screen.</p>
   <p>This information is kept in the app’s private storage on your device. We do not run a server, and we cannot see it. Uninstalling the app or using <em>Settings → Erase all data</em> deletes it.</p>
 
+  <h2>Backups</h2>
+  <p>You can make a backup of your Daybloom data from <em>Settings → Backup and restore</em>. The app writes one file (JSON) with the information listed above and opens your phone’s share menu; the file goes only where you choose to send it, for example your own Google Drive. The weekly backup keeps a copy in the app’s private storage on your phone and reminds you to save it. Restoring reads a backup file you pick and replaces the data on the phone after you confirm. Daybloom does not upload backups anywhere by itself.</p>
+  <p>If your phone’s own Google backup is switched on (Android settings), Android may include Daybloom’s data in that backup to your Google account and restore it when you reinstall the app or set up a new phone. This is handled by Android and Google under their terms.</p>
+
   <h2>What leaves your phone</h2>
   <p>When your chosen number of low days in a row is reached, or when you tap <em>Send a test nudge</em>, the app sends one message over HTTPS to <a href="https://ntfy.sh" rel="noopener">ntfy.sh</a>, a public notification service, addressed to your buddy’s topic code. The message contains your first name and a request to call you. It never contains your moods, your tasks, your history, or the reason for the nudge.</p>
   <p>When the app opens, it also asks ntfy.sh whether your buddy has confirmed joining. That request contains only the topic code.</p>

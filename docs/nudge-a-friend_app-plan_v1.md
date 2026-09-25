@@ -53,6 +53,8 @@ Two lines of evidence support contact-based prevention. A meta-analysis of 148 s
 | Today screen | Mood picker with animated mood orbs, today's result, seven-day strip, buddy status, support card on Heavy days |
 | Journey screen | Month calendar coloured by mood, check-in streak, monthly mood distribution |
 | Buddy screen | Invite via WhatsApp/SMS share sheet, connection status, test nudge, nudge history, change buddy |
+| Eisenhower Matrix | Four quadrant cards (Do first, Schedule, Delegate, Later) with task counts and due badges (Today, 1D, 3D, late); add/edit sheet with quadrant and due-date choice; full quadrant view with completed tasks |
+| Focus today | On the Today screen: tasks due today or late (any quadrant), then Do first; reduced to one task when today's mood is Low or Heavy |
 | Settings | Name, daily reminder (on/off, time), nudge threshold, privacy summary, helpline, privacy policy, erase all data |
 | Nudge delivery | HTTPS publish to ntfy.sh with automatic retry when offline |
 | Buddy onboarding | Web page `arancastro.github.io/join/` (install ntfy, subscribe, confirm "I'm in") |
@@ -62,6 +64,10 @@ Two lines of evidence support contact-based prevention. A meta-analysis of 148 s
 *Table 3. Features in version 1.*
 
 Verification carried out: TypeScript type-check and ESLint pass with no errors. An automated browser test completed the onboarding flow, seeded two prior low days, recorded a third, and confirmed that exactly one nudge was published with the payload `"Call Aran today"` (no mood data), that a further low entry on the same day produced no second nudge, and that the buddy's confirmation was detected.
+
+### 5.1 Why the matrix belongs in the same app
+
+The Eisenhower Matrix sorts tasks by urgency and importance. Placing it beside the mood check-in lets the app adapt the day's workload to the day's state: on a Low or Heavy day the Focus list shows a single task instead of three. Task data follow the same rule as mood data and remain on the device. The combination also gives users a daily reason to open the app on good days, which keeps the check-in habit alive for the days when the nudge matters.
 
 ## 6. Architecture
 

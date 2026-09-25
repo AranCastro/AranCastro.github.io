@@ -1,4 +1,4 @@
-# Daybloom (formerly Nudge a Friend): Product Analysis and Development Plan
+# Daybloom: Mood & Garden (formerly Nudge a Friend): Product Analysis and Development Plan
 
 **Version:** 1.0 (25 September 2026)
 **Author:** Dr Aran Castro
@@ -134,7 +134,7 @@ Known limitation: because there is no server, the app cannot detect *silence* (a
 - [ ] Google Play developer account (one-time registration fee, USD 25)
 - [ ] Confirm package name `online.draran.daybloom` (cannot be changed after first upload)
 - [ ] `eas build -p android --profile production` to produce the `.aab`
-- [ ] Store listing: short description, full description, 2–8 phone screenshots, 512 × 512 icon, 1024 × 500 feature graphic
+- [ ] Store listing (text drafted in `docs/daybloom_store-listing_v1.md`): title "Daybloom: Mood & Garden", short description, full description, 2–8 phone screenshots, 512 × 512 icon, 1024 × 500 feature graphic
 - [ ] Privacy policy URL: `https://arancastro.github.io/privacy/`
 - [ ] Data safety form: no data collected by the developer; first name sent to ntfy.sh for app functionality
 - [ ] Content rating questionnaire; declare health-related features accurately

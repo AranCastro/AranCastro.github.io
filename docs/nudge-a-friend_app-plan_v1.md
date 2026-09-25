@@ -60,6 +60,7 @@ Two lines of evidence support contact-based prevention. A meta-analysis of 148 s
 | Play | Four short games matched to today's mood: Breathe (Heavy; three paced-breathing rhythms with a progress ring), Bubble Pop (Low; untimed Zen mode or a 60 s dash), Pair Up (Okay; memory game at three levels with star rating), Colour Clash (Good or Bright; 30 s word-colour interference task with streak multipliers). Shared results screen, countdown and particle effects. Best scores kept on the device |
 | Focus timer | Pomodoro presets Gentle 15/3, Classic 25/5, Deep 50/10; optional link to a Matrix task; pause, resume, stop; end-time storage so the timer survives the app closing; alarm notification; screen kept awake |
 | Focus Garden (reward) | Each completed session grows one flower (7 common; 4 rare at 15 %; Golden Lotus every tenth session); collection of 12, day streak and total hours; stopping early grows nothing |
+| Streak and badges | Check-in streak with one forgiven rest day after every 7 check-ins; best streak; 12 bronze, silver and gold badges (streak milestones, days noted, Honest day, Welcome back); celebration on earning; badges kept after a streak ends |
 | Settings | Name, daily reminder (on/off, time), nudge threshold, privacy summary, helpline, privacy policy, erase all data |
 | Nudge delivery | HTTPS publish to ntfy.sh with automatic retry when offline |
 | Buddy onboarding | Web page `arancastro.github.io/join/` (install ntfy, subscribe, confirm "I'm in") |

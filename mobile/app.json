@@ -1,0 +1,75 @@
+{
+  "expo": {
+    "name": "Daybloom",
+    "slug": "daybloom",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "daybloom",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "icon": "./assets/images/icon.png",
+      "bundleIdentifier": "online.draran.daybloom",
+      "supportsTablet": false
+    },
+    "android": {
+      "package": "online.draran.daybloom",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "backgroundColor": "#F6F2EC",
+        "foregroundImage": "./assets/images/android-icon-foreground.png",
+        "backgroundImage": "./assets/images/android-icon-background.png",
+        "monochromeImage": "./assets/images/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false,
+      "permissions": [
+        "android.permission.POST_NOTIFICATIONS"
+      ],
+      "blockedPermissions": [
+        "android.permission.WRITE_CONTACTS"
+      ]
+    },
+    "web": {
+      "output": "single",
+      "favicon": "./assets/images/favicon.png",
+      "name": "Daybloom",
+      "themeColor": "#2F4A3F",
+      "backgroundColor": "#F6F2EC"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#F6F2EC",
+          "image": "./assets/images/splash-icon.png",
+          "imageWidth": 120,
+          "dark": {
+            "backgroundColor": "#12110F",
+            "image": "./assets/images/splash-icon.png"
+          }
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "color": "#2F4A3F"
+        }
+      ],
+      "expo-sqlite",
+      [
+        "expo-contacts",
+        {
+          "contactsPermission": "Allow Daybloom to read the contact you pick, so you can call or message them in one tap."
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    },
+    "description": "Grow a little every day: a one-tap mood check-in, tasks, focus timer, calm games and your circle, all growing one garden. After a few low days, one trusted friend is quietly asked to call you.",
+    "backgroundColor": "#F6F2EC",
+    "primaryColor": "#2F4A3F"
+  }
+}

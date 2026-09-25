@@ -45,7 +45,7 @@ Breathe, Bubble Pop, Pair Up and Colour Clash, with one picked for today's mood.
 Bronze, silver and gold badges for streaks, for days noted, for coming back after time away, and for checking in honestly on a hard day.
 
 **Home screen widgets**
-Six widgets in light and dark: check in with one tap, tick off today's tasks, see your garden and streak, start a focus session, or call someone from your circle, without opening the app.
+Eight widgets in light and dark: the full Eisenhower Matrix and your people circle, with your choice of theme, opacity and text size; check in with one tap, tick off today's tasks, see your garden and streak, start a focus session, or call someone from your circle, without opening the app.
 
 **Private by design**
 No account, no advertising, no tracking. Your moods, tasks, circle and garden stay on your phone. The only thing that ever leaves it is the one-line nudge to the buddy you choose.

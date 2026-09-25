@@ -11,6 +11,7 @@ import { Badge, newlyEarned } from '@/lib/badges';
 import { FlowerKind, flowerOf, pickFlower } from '@/lib/flowers';
 import type { ActiveTimer, FocusSession } from '@/lib/focus';
 import { MoodValue } from '@/lib/moods';
+import { sortOpen } from '@/lib/quadrants';
 import { buddyHasJoined, sendNudge, sendTest } from '@/lib/ntfy';
 import { isLowStreak } from '@/lib/nudge-rule';
 
@@ -38,6 +39,8 @@ export type Task = {
   done: boolean;
   doneAt?: number;
   createdAt: number;
+  /** Position set by hand (Arrange); tasks without one follow, in the automatic order. */
+  order?: number;
 };
 
 /** Circle quadrant: 1 call anytime, 2 quick call, 3 message first, 4 light chat. */
@@ -90,7 +93,22 @@ export type AppState = {
   badges: Record<string, number>;
   /** Pomodoro: completed sessions (newest first) and the running timer. */
   focus: { sessions: FocusSession[]; active: ActiveTimer | null };
+  /** Look of the matrix-style home-screen widgets, set in Settings → Home screen widgets. */
+  widgetPrefs: Record<'Matrix' | 'Circle', WidgetPrefs>;
 };
+
+export type WidgetPrefs = {
+  theme: 'auto' | 'light' | 'dark';
+  /** Background opacity, 40–100 (%). */
+  opacity: number;
+  font: 'small' | 'default' | 'large';
+  /** Matrix: tick circles next to tasks. Circle: call and message buttons. */
+  checkbox: boolean;
+  /** Matrix only: also list finished tasks. */
+  completed: boolean;
+};
+
+export const DEFAULT_WIDGET_PREFS: WidgetPrefs = { theme: 'auto', opacity: 100, font: 'default', checkbox: true, completed: false };
 
 const KEY = 'nudge.state.v1';
 
@@ -110,6 +128,7 @@ const initial: AppState = {
   focus: { sessions: [], active: null },
   badges: {},
   garden: [],
+  widgetPrefs: { Matrix: DEFAULT_WIDGET_PREFS, Circle: DEFAULT_WIDGET_PREFS },
 };
 
 function load(): AppState {
@@ -118,6 +137,7 @@ function load(): AppState {
   try {
     const saved = JSON.parse(raw) as Partial<AppState>;
     const merged = { ...initial, ...saved };
+    merged.widgetPrefs = { ...initial.widgetPrefs, ...saved.widgetPrefs };
     // Gardens began with focus sessions only: carry those flowers over once.
     if (!saved.garden && saved.focus?.sessions?.length) {
       merged.garden = saved.focus.sessions.map((f, i) => ({ id: `m${i}-${f.at}`, at: f.at, flower: f.flower, source: 'focus' as const, ref: f.taskId }));
@@ -167,6 +187,10 @@ export function useAppState<T>(select: (s: AppState) => T): T {
     () => select(state),
     () => select(state),
   );
+}
+
+export function setWidgetPrefs(name: keyof AppState['widgetPrefs'], patch: Partial<WidgetPrefs>) {
+  update((s) => ({ widgetPrefs: { ...s.widgetPrefs, [name]: { ...s.widgetPrefs[name], ...patch } } }));
 }
 
 export function resetAll() {
@@ -232,7 +256,10 @@ export function addTask(title: string, quadrant: Quadrant, due?: string) {
 }
 
 export function editTask(id: string, patch: Partial<Pick<Task, 'title' | 'quadrant' | 'due'>>) {
-  update((s) => ({ tasks: s.tasks.map((t) => (t.id === id ? { ...t, ...patch } : t)) }));
+  // A task moved to another quadrant joins it at the end of the arranged tasks.
+  update((s) => ({
+    tasks: s.tasks.map((t) => (t.id === id ? { ...t, ...patch, order: patch.quadrant && patch.quadrant !== t.quadrant ? undefined : t.order } : t)),
+  }));
 }
 
 export function toggleTask(id: string) {
@@ -254,16 +281,23 @@ export function clearCompleted() {
   update((s) => ({ tasks: s.tasks.filter((t) => !t.done) }));
 }
 
-/** Open tasks in a quadrant: dated tasks first (soonest due), then undated by creation. */
+/** Open tasks in a quadrant: arranged ones first (by hand), then dated (soonest due), then by creation. */
 export function openTasks(tasks: Task[], quadrant: Quadrant): Task[] {
-  return tasks
-    .filter((t) => t.quadrant === quadrant && !t.done)
-    .sort((a, b) => {
-      if (a.due && b.due) return a.due.localeCompare(b.due);
-      if (a.due) return -1;
-      if (b.due) return 1;
-      return a.createdAt - b.createdAt;
-    });
+  return sortOpen(tasks.filter((t) => t.quadrant === quadrant && !t.done));
+}
+
+/** Moves an open task within its quadrant. Fixes the order of the whole quadrant from then on. */
+export function moveTask(id: string, to: 'up' | 'down' | 'top' | 'bottom') {
+  const task = state.tasks.find((t) => t.id === id);
+  if (!task || task.done) return;
+  const list = openTasks(state.tasks, task.quadrant).map((t) => t.id);
+  const from = list.indexOf(id);
+  const target = to === 'up' ? from - 1 : to === 'down' ? from + 1 : to === 'top' ? 0 : list.length - 1;
+  if (target < 0 || target >= list.length || target === from) return;
+  list.splice(from, 1);
+  list.splice(target, 0, id);
+  const pos = new Map(list.map((x, i) => [x, i]));
+  update((s) => ({ tasks: s.tasks.map((t) => (pos.has(t.id) ? { ...t, order: pos.get(t.id) } : t)) }));
 }
 
 // ── People (support circle matrix) ───────────────────────────────────────────

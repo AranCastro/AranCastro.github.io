@@ -59,7 +59,7 @@ Two lines of evidence support contact-based prevention. A meta-analysis of 148 s
 | Reach out today | On a Low or Heavy day, Today suggests one person to call and one to message, least recently reached first |
 | Play | Four short games matched to today's mood: Breathe (Heavy; three paced-breathing rhythms with a progress ring), Bubble Pop (Low; untimed Zen mode or a 60 s dash), Pair Up (Okay; memory game at three levels with star rating), Colour Clash (Good or Bright; 30 s word-colour interference task with streak multipliers). Shared results screen, countdown and particle effects. Best scores kept on the device |
 | Focus timer | Pomodoro presets Gentle 15/3, Classic 25/5, Deep 50/10; optional link to a Matrix task; pause, resume, stop; end-time storage so the timer survives the app closing; alarm notification; screen kept awake |
-| Focus Garden (reward) | Each completed session grows one flower (7 common; 4 rare at 15 %; Golden Lotus every tenth session); collection of 12, day streak and total hours; stopping early grows nothing |
+| Unified garden (reward) | Every activity grows a flower in one garden: daily check-in, finished task (removed if unticked), focus session, first finish of each game per day, reaching out (once a day), each badge (always rare). 12 kinds (7 common, 4 rare, Golden Lotus every 20th bloom). Global bloom toast; Garden tab replaces Journey |
 | Streak and badges | Check-in streak with one forgiven rest day after every 7 check-ins; best streak; 12 bronze, silver and gold badges (streak milestones, days noted, Honest day, Welcome back); celebration on earning; badges kept after a streak ends |
 | Settings | Name, daily reminder (on/off, time), nudge threshold, privacy summary, helpline, privacy policy, erase all data |
 | Nudge delivery | HTTPS publish to ntfy.sh with automatic retry when offline |
@@ -82,6 +82,10 @@ The nudge relies on one buddy noticing. The circle matrix adds a second route th
 ### 5.3 Mood-matched games
 
 The Play tab offers one game chosen from today's check-in. The pairing follows task demand: the lower the mood, the lower the effort asked. Heavy days get a paced-breathing exercise with nothing to win; Low days get an untimed bubble game with no failure state; Okay days get a short memory game; Good and Bright days get a timed word-colour interference task in the style of the Stroop test. No therapeutic effect is claimed for any game; they are presented as short breaks, and any such claim would need a controlled evaluation.
+
+### 5.4 Why one garden
+
+Each feature previously had its own reward. A single garden turns every small action into visible, cumulative progress in one place, so the app reads as one product rather than a set of tools. The limits (one check-in flower a day, one per game a day, one reach-out a day, task flowers withdrawn if a task is unticked) keep the garden a record of real activity rather than something to farm.
 
 ## 6. Architecture
 

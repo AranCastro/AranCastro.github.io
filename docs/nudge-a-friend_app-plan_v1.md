@@ -55,6 +55,8 @@ Two lines of evidence support contact-based prevention. A meta-analysis of 148 s
 | Buddy screen | Invite via WhatsApp/SMS share sheet, connection status, test nudge, nudge history, change buddy |
 | Eisenhower Matrix | Four quadrant cards (Do first, Schedule, Delegate, Later) with task counts and due badges (Today, 1D, 3D, late); add/edit sheet with quadrant and due-date choice; full quadrant view with completed tasks |
 | Focus today | On the Today screen: tasks due today or late (any quadrant), then Do first; reduced to one task when today's mood is Low or Heavy |
+| Circle matrix | People sorted by closeness (close / wider) and contact mode (call / message): Call anytime, Quick call, Message first, Light chat; add from the phone's contact picker or by hand; one-tap Call, SMS and WhatsApp with a neutral opener |
+| Reach out today | On a Low or Heavy day, Today suggests one person to call and one to message, least recently reached first |
 | Settings | Name, daily reminder (on/off, time), nudge threshold, privacy summary, helpline, privacy policy, erase all data |
 | Nudge delivery | HTTPS publish to ntfy.sh with automatic retry when offline |
 | Buddy onboarding | Web page `arancastro.github.io/join/` (install ntfy, subscribe, confirm "I'm in") |
@@ -68,6 +70,10 @@ Verification carried out: TypeScript type-check and ESLint pass with no errors. 
 ### 5.1 Why the matrix belongs in the same app
 
 The Eisenhower Matrix sorts tasks by urgency and importance. Placing it beside the mood check-in lets the app adapt the day's workload to the day's state: on a Low or Heavy day the Focus list shows a single task instead of three. Task data follow the same rule as mood data and remain on the device. The combination also gives users a daily reason to open the app on good days, which keeps the check-in habit alive for the days when the nudge matters.
+
+### 5.2 The circle matrix
+
+The nudge relies on one buddy noticing. The circle matrix adds a second route that the user controls: on a low day the app proposes a specific person and a specific action, which removes the decision of whom to contact at the moment when decisions are hardest. Gulliver et al. (2010) identified social support and encouragement from others as facilitators of help-seeking; the matrix makes that support visible and one tap away. Suggestions rotate by the date each person was last reached, so the same friend is not asked every time. Pre-written openers ("Hey, thinking of you. How have you been?") contain no reference to mood, so the user decides how much to share.
 
 ## 6. Architecture
 
@@ -94,9 +100,10 @@ Known limitation: because there is no server, the app cannot detect *silence* (a
 1. **Not a medical service.** The app states this on the home page, in Settings and in the privacy policy, and presents Tele-MANAS (14416) and 112.
 2. **Minimum disclosure.** The nudge contains only the user's first name. Mood values never leave the device.
 3. **Consent of the buddy.** The buddy must install ntfy and subscribe; no message reaches anyone who has not opted in.
-4. **Misuse.** A controlling partner could pressure a user to name them as buddy. The user can change or remove the buddy at any time without the buddy being notified.
-5. **Topic security.** Topics are random 12-character codes (about 62 bits of entropy). Anyone holding the code could post to it; Phase 2 moves to authenticated delivery.
-6. **Clinical review.** Before public launch, the wording of all prompts and the support card should be reviewed by a qualified mental-health professional.
+4. **Contacts.** The app reads only the single contact the user picks; `WRITE_CONTACTS` is blocked, and circle data never leave the device.
+5. **Misuse.** A controlling partner could pressure a user to name them as buddy. The user can change or remove the buddy at any time without the buddy being notified.
+6. **Topic security.** Topics are random 12-character codes (about 62 bits of entropy). Anyone holding the code could post to it; Phase 2 moves to authenticated delivery.
+7. **Clinical review.** Before public launch, the wording of all prompts and the support card should be reviewed by a qualified mental-health professional.
 
 ## 8. Roadmap
 

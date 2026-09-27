@@ -30,7 +30,7 @@
     <li>Your daily mood choices, one per day, and any feeling tags you add to a day (for example “Grateful” or “Tension”).</li>
     <li>The tasks you add to the Eisenhower Matrix, with their quadrant, due date and completion status.</li>
     <li>The people you add to your circle: name, phone number (optional), circle quadrant, and when you last reached them from the app.</li>
-    <li>If you turn on the app lock: a salted hash of your PIN (never the PIN itself) and your lock settings. These are kept apart from your other data and are not included in backup files.</li>
+    <li>If you turn on the app lock: a salted, repeatedly hashed form of your PIN (never the PIN itself), your lock settings and the count of wrong attempts. These are kept in Android’s encrypted storage, apart from your other data, and are not included in backup files. While the lock is on, Android is asked to hide Daybloom from screenshots and from the recent-apps preview.</li>
     <li>The one-line notes you add to your jar of good days.</li>
     <li>The places you name (for example Home or Office), which place you tagged on each check-in and, if you pin a place, its GPS coordinates. These never leave your phone except inside a backup file you choose to save.</li>
     <li>Your Thottam pookalam designs.</li>
@@ -49,7 +49,7 @@
 
   <h2>Backups</h2>
   <p>You can make a backup of your Daybloom data from <em>Settings → Backup and restore</em>. The app writes one file (JSON) with the information listed above and opens your phone’s share menu; the file goes only where you choose to send it, for example your own Google Drive. The weekly backup keeps a copy in the app’s private storage on your phone and reminds you to save it. Restoring reads a backup file you pick and replaces the data on the phone after you confirm. Daybloom does not upload backups anywhere by itself.</p>
-  <p>If your phone’s own Google backup is switched on (Android settings), Android may include Daybloom’s data in that backup to your Google account and restore it when you reinstall the app or set up a new phone. This is handled by Android and Google under their terms.</p>
+  <p>From version 3.0, Daybloom opts out of Android’s automatic Google backup, so your phone does not copy Daybloom’s data to your Google account by itself. Use the backup file described above to move your data to a new phone. Erase everything in Settings also deletes the weekly backup copies kept on the phone.</p>
 
   <h2>What leaves your phone</h2>
   <p>The app makes no network requests with your data. When your chosen number of low days in a row is reached, it shows a notification and a card on the Today screen. If you tap SMS or WhatsApp, your phone’s messaging app or WhatsApp opens with a short request to call you and your buddy’s number filled in; nothing is sent until you press Send there. The message never contains your moods, your tasks, your history, or the reason for it. Delivery is handled by your mobile operator or WhatsApp under their own terms.</p>

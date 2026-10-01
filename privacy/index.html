@@ -16,7 +16,7 @@
 <div class="wrap">
   <header class="bar"><a href="../"><img src="../assets/icon-256.png" alt="">Daybloom</a></header>
 
-  <p class="label">Effective 28 September 2026</p>
+  <p class="label">Effective 1 October 2026</p>
   <h1>Privacy Policy</h1>
   <p class="lede">Your moods, tasks and circle stay on your phone. Your data stays on your phone. The only thing the app itself ever sends is an approximate location for the weather, and only if you switch on live weather. Messages and flower cards are sent by you, from your own apps.</p>
 
@@ -58,17 +58,18 @@
     <li>Open Daybloom and tap <em>Settings</em> (the icon at the top right of Today).</li>
     <li>Scroll down and tap <em>Erase all data</em>, then confirm.</li>
   </ol>
-  <p>This deletes everything: check-ins, feeling tags and your own moods, notes, tasks and routines, focus sessions, the garden and badges, your circle of people, places, Poo Kolam designs, settings, the app lock and the weekly backup copies on the phone. Nothing is kept afterwards and there is no retention period. Uninstalling the app has the same effect. Backup files you saved yourself (for example in your Google Drive) are yours to delete there. If Live weather was on, Open-Meteo received only an approximate location with each weather request; Daybloom does not store it anywhere off your phone. Questions: <a href="mailto:arancastro17@gmail.com">arancastro17@gmail.com</a>.</p>
+  <p>This deletes everything: check-ins, feeling tags and your own moods, notes, tasks and routines, focus sessions, the garden and badges, your circle of people, places, Poo Kolam designs, settings, the app lock and the weekly backup copies on the phone. Nothing is kept afterwards and there is no retention period. Uninstalling the app has the same effect. Backup files you saved yourself (for example in your Google Drive) are yours to delete there. Erasing the app does not remove a sync copy in Google Drive (GitHub version only); remove it with <em>Stop and remove Drive copy</em> in Settings before erasing, or in Google Drive under Manage apps. If Live weather was on, Open-Meteo received only an approximate location with each weather request; Daybloom does not store it anywhere off your phone. Questions: <a href="mailto:arancastro17@gmail.com">arancastro17@gmail.com</a>.</p>
 
   <h2>What leaves your phone</h2>
   <p>The app makes no network requests with your data. When your chosen number of low days in a row is reached, it shows a notification and a card on the Today screen. If you tap SMS or WhatsApp, your phone’s messaging app or WhatsApp opens with a short request to call you and your buddy’s number filled in; nothing is sent until you press Send there. The message never contains your moods, your tasks, your history, or the reason for it. Delivery is handled by your mobile operator or WhatsApp under their own terms.</p>
   <p><strong>Live weather (optional, off by default):</strong> if you switch on <em>Live weather in the garden</em>, the app sends your location rounded to 0.1° (about 11 km) to <a href="https://open-meteo.com" rel="noopener">Open-Meteo</a>, a free weather service, at most about every 30 minutes while you use the app, and receives the current weather. Nothing else is sent with it: no name, no mood, no identifier from the app. Open-Meteo's handling of requests is governed by its own terms. Switch it off in Settings at any time.</p>
+  <p><strong>Sync between phones (GitHub version 3.4 and later only, optional, off by default):</strong> the version downloaded from GitHub can sync your data between your phones. It is not in the Google Play version. If you tap <em>Sign in with Google</em> in Settings, Google's sign-in gives the app your email address (shown in Settings) and permission to keep one file, <code>daybloom-sync.json</code>, in the hidden app-data folder of your own Google Drive. That file holds a copy of your Daybloom data (moods, notes, tasks, routines, focus sessions, garden, circle, places and settings), without your profile photo, widget settings or backup dates. It goes directly between your phone and Google Drive; it never passes through a server of ours and we cannot read it. The app cannot see any other file in your Drive. To stop, tap <em>Stop</em> in Settings: you can keep or remove the Drive copy. You can also remove it in Google Drive under Settings → Manage apps → Daybloom → Delete hidden app data. Google's handling of your account and Drive is governed by Google's own terms.</p>
   <p><strong>Pictures you share:</strong> a flower card or a pookalam is made into a picture on your phone and handed to the share menu; it goes only where you send it.</p>
   <p>Versions 1.7 and earlier sent this message through the public notification service ntfy.sh. From version 1.8 the app no longer contacts ntfy.sh.</p>
 
   <h2>What we do not do</h2>
   <ul class="plain">
-    <li>No user accounts, sign-in, or phone number collection.</li>
+    <li>No user accounts of ours and no phone number collection. The only sign-in is the optional Google sign-in for sync in the GitHub version (see above).</li>
     <li>No advertising, analytics, or tracking software.</li>
     <li>No sale or sharing of data with anyone.</li>
     <li>No reading of your address book or your location in the background, and no access to your camera or microphone.</li>
